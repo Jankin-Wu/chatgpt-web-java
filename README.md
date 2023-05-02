@@ -39,6 +39,16 @@
   - https://front3.stargpt.top/
 
 # 功能
+## 此仓库新增功能
+### 支持添加多个 API Key 在全局每次调用 chatGPT API 时轮流切换使用
+
+多个 API Key 分流请求可使客户端支持更多人使用
+
+### 支持激活码生成和用户激活功能
+
+管理员可自定义生成邀请码的数量和时长，分发给用户后，只需要在输入框输入邀请码即可激活
+
+![59c67b55ebf0fff7f48e2554af51637](http://oss.jankinwu.com/img/59c67b55ebf0fff7f48e2554af51637.jpg)
 
 ## 已实现
 
