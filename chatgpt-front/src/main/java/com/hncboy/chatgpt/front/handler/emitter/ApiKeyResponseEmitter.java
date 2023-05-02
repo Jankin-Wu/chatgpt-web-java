@@ -51,7 +51,7 @@ public class ApiKeyResponseEmitter implements ResponseEmitter {
 
     @Override
     public void requestToResponseEmitter(ChatProcessRequest chatProcessRequest, ResponseBodyEmitter emitter) {
-        String apiKey = ApiKeyHolder.getInstance().get();
+        String apiKey = ApiKeyHolder.getInstance().getNextApiKey();
         // 初始化聊天消息
         ChatMessageDO chatMessageDO = chatMessageService.initChatMessage(chatProcessRequest, ApiTypeEnum.API_KEY, apiKey);
 
