@@ -58,13 +58,13 @@
 
 数据库存储了每次聊天对话的记录，在选择上下文聊天时，通过 parentMessageId 往上递归遍历获取历史消息，将历史问题以及回答消息都发送给 GPT。
 
-![](pics/question_context_limit_test.png)
+![](http://oss.jankinwu.com/img/question_context_limit_test.png)
 
 ### 敏感词过滤
 
 在项目启动时会将敏感词文件 sensitive_word_base64.txt 的数据导入到敏感词表，目前还未提供后台管理敏感词的接口，提供后这种方式可以去掉。在文件中敏感词以 base64 形式存放。并将敏感词表的数据构建到 HuTool 提供的 WordTree 类中。在发送消息调用方法判断是否属于敏感词，是的话消息发送不成功。为了兼容前端保持上下文关系，在消息内容属于敏感词的情况下会正常返回消息格式，但是带的是请求的的 conversationI 和 parentMessagId。
 
-![](pics/sensitive_word_test.png)
+![](http://oss.jankinwu.com/img/sensitive_word_test.png)
 
 ### 限流
 
@@ -72,13 +72,13 @@
 
 在配置文件中配置 maxRequest、maxRequestSecond、ipMaxRequest、ipMaxRequestSecond
 
-![](pics/rate_limit_test.png)
+![](http://oss.jankinwu.com/img/rate_limit_test.png)
 
 ### 登录注册
 
 通过邮箱进行登录注册
 
-![](pics/register_1.png)
+![](http://oss.jankinwu.com/img/register_1.png)
 
 ## 待实现
 
@@ -90,25 +90,25 @@
 
 展示消息的列表，问题和回答各是一条消息。通过父消息 id 关联上一条消息。父消息和当前消息一定是同一个聊天室的。
 
-![](pics/chat_message_1.png)
+![](http://oss.jankinwu.com/img/chat_message_1.png)
 
 ## 限流记录
 
 查看各个 ip 的限流记录，只记录在限流时间范围的限流次数。
 
-![](pics/rate_limit_1.png)
+![](http://oss.jankinwu.com/img/rate_limit_1.png)
 
 ## 聊天室管理
 
 查看聊天室。这里的聊天室和客户端左边的对话不是同一个概念。在同一个窗口中，我们既可以选择关联上下文发送后者不关联上下文发送。如果不关联上下文发送每次发送消息都会产生一个聊天室。
 
-![](pics/chat_room_1.png)
+![](http://oss.jankinwu.com/img/chat_room_1.png)
 
 ## 敏感词管理
 
 查看敏感词列表，目前只提供了查询的功能，后期可以增加管理。
 
-![](pics/sensitive_word_1.png)
+![](http://oss.jankinwu.com/img/sensitive_word_1.png)
 
 # 运行部署
 
@@ -166,7 +166,7 @@
       -e CHAT_HTTP_PROXY_PORT=7890 \
       chatgpt-web-java
 ```
-  ![](pics/docker_run.png)
+  ![](http://oss.jankinwu.com/img/docker_run.png)
 
 ## docker-compose
 
