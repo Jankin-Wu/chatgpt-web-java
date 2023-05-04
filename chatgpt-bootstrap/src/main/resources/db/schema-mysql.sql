@@ -178,3 +178,30 @@ CREATE TABLE IF NOT EXISTS `front_user_api_key_rel`  (
     `api_key` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT 'ApiKey',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '客户端用户和ApiKey的绑定关系' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for activation_code
+-- ----------------------------
+CREATE TABLE IF NOT EXISTS `activation_code`  (
+    `id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '激活码ID',
+    `code` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '激活码',
+    `status` int(0) NULL DEFAULT 0 COMMENT '状态（0：未分发未使用，1：已分发未激活，2：已使用）',
+    `gen_time` datetime(0) NULL DEFAULT NULL COMMENT '生成时间',
+    `activation_time` datetime(0) NULL DEFAULT NULL COMMENT '激活时间',
+    `validity_period` int(0) NULL DEFAULT NULL COMMENT '有效期（单位：月）',
+    `expiration_time` datetime(0) NULL DEFAULT NULL COMMENT '到期时间',
+    `is_enabled` int(0) NULL DEFAULT 1 COMMENT '是否可用（0：不可用，1：可用）',
+    `inviter` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '邀请者',
+    `remarks` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '备注',
+    `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改日期',
+    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 55 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '激活码' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for front_user_activation_code_rel
+-- ----------------------------
+CREATE TABLE IF NOT EXISTS `front_user_activation_code_rel`  (
+    `user_id` int(0) NOT NULL COMMENT '用户ID',
+    `activation_code_id` bigint(0) NULL DEFAULT NULL COMMENT '激活码ID',
+    PRIMARY KEY (`user_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '用户和激活码绑定关系' ROW_FORMAT = Dynamic;
