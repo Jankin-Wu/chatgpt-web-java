@@ -9,6 +9,7 @@ import com.hncboy.chatgpt.base.handler.ActivationCodeHandler;
 import com.hncboy.chatgpt.base.util.ActivationCodeGenerator;
 import com.hncboy.chatgpt.base.util.DateUtil;
 import com.hncboy.chatgpt.base.util.ObjectMapperUtil;
+import com.hncboy.chatgpt.base.util.StringUtils;
 import com.hncboy.chatgpt.front.domain.request.ChatProcessRequest;
 import com.hncboy.chatgpt.front.domain.vo.ChatReplyMessageVO;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter;
@@ -32,6 +33,7 @@ public class ActivationCodeEmitterChain extends AbstractResponseEmitterChain{
                 ChatReplyMessageVO chatReplyMessageVO = ChatReplyMessageVO.onEmitterChainException(request);
                 String prompt = request.getPrompt();
                 // 如果用户绑定的激活码无效，判断提示词格式是否为验证码格式
+                prompt = StringUtils.removeSpacesAndBlankLines(prompt);
                 if (!ActivationCodeGenerator.isActivationCodeFormat(prompt)) {
                     chatReplyMessageVO.setText("此账号未绑定激活码，或绑定的激活码已失效，请联系管理员（微信：JankinWu_）购买激活码。获取到新的激活码后，复制到输入框发送即可激活。");
                     emitter.send(ObjectMapperUtil.toJson(chatReplyMessageVO));
