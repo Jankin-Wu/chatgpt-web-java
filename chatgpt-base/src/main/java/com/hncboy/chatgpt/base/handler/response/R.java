@@ -84,6 +84,17 @@ public class R<T> {
     /**
      * 返回 R
      *
+     * @param data 消息
+     * @param <T> T 泛型标记
+     * @return R
+     */
+    public static <T> R<T> success(T data) {
+        return data(data);
+    }
+
+    /**
+     * 返回 R
+     *
      * @param msg 消息
      * @param <T> T 泛型标记
      * @return R
