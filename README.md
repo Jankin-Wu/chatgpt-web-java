@@ -5,6 +5,7 @@
 - ChatGPT 说文解字前端的 Java 后台
 - 前端-说文用户端开源代码 https://github.com/mjjh1717/chatgpt-shuowen
 - 前端-解字管理端开源代码 https://github.com/hncboy/chatgpt-jiezi
+- 前端-解字管理端适配激活码管理功能开源代码 https://github.com/liubingye/chatgpt-jiezi-admin
 
 # 注意
 
